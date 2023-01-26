@@ -26,10 +26,10 @@ public class ClickHandler extends MouseAdapter {
         endPoint.x = e.getX();
         endPoint.y = e.getY();
 
-        int width = endPoint.x - startPoint.x;
-        int height = endPoint.y - startPoint.y;
+        int width = Math.abs(endPoint.x - startPoint.x);
+        int height = Math.abs(endPoint.y - startPoint.y);
 
-        paintCanvas.drawRectangle(startPoint.x, startPoint.y, width, height);
+        paintCanvas.drawRectangle(Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y), width, height);
     }
 }
 

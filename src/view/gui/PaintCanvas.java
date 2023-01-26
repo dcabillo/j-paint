@@ -2,17 +2,16 @@ package view.gui;
 
 import javax.swing.JComponent;
 import java.awt.*;
+import java.util.ArrayList;
+
 
 public class PaintCanvas extends JComponent {
-
+    private ArrayList<Rectangle> rectangles = new ArrayList<>();
 
     int x, y, width, height;
 
     public void drawRectangle(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        rectangles.add(new Rectangle(x, y, width, height));
         repaint();
     }
     @Override
@@ -21,7 +20,9 @@ public class PaintCanvas extends JComponent {
 
         // For example purposes only; remove all lines below from your final project.
         // Draw all shapes here
-        graphics2d.setColor(Color.GREEN);
-        graphics2d.drawRect(x, y, width, height);
+        for (Rectangle rec: rectangles) {
+            graphics2d.setColor(Color.GREEN);
+            graphics2d.fillRect(rec.x, rec.y, rec.width, rec.height);
+        }
     }
 }
