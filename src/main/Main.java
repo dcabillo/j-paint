@@ -2,6 +2,7 @@ package main;
 
 import controller.IJPaintController;
 import controller.JPaintController;
+import controller.ClickHandler;
 import model.ShapeColor;
 import model.ShapeType;
 import model.persistence.ApplicationState;
@@ -18,6 +19,7 @@ import java.util.EnumMap;
 public class Main {
     public static void main(String[] args){
         PaintCanvas paintCanvas = new PaintCanvas();
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas));
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
