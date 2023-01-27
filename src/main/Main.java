@@ -24,7 +24,7 @@ public class Main {
         IUiModule uiModule = new Gui(guiWindow);
 
         ApplicationState appState = new ApplicationState(uiModule);
-        IJPaintController controller = new JPaintController(uiModule, appState);
+        IJPaintController controller = new JPaintController(uiModule, appState, paintCanvas);
 
         controller.setup();
     }

@@ -5,13 +5,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class PaintCanvas extends JComponent {
-    private ArrayList<Rectangle> rectangles = new ArrayList<>();
 
-    int x, y, width, height;
+public class PaintCanvas extends JComponent {
+    ShapeCollection shapes = ShapeCollection.getInstance();
 
     public void drawRectangle(int x, int y, int width, int height) {
-        rectangles.add(new Rectangle(x, y, width, height));
+        Rectangle rec = new Rectangle(x, y, width, height);
+        shapes.addRectangle(rec);
         repaint();
     }
     @Override
@@ -20,7 +20,7 @@ public class PaintCanvas extends JComponent {
 
         // For example purposes only; remove all lines below from your final project.
         // Draw all shapes here
-        for (Rectangle rec: rectangles) {
+        for (Rectangle rec: shapes.getRectangles()) {
             graphics2d.setColor(Color.GREEN);
             graphics2d.fillRect(rec.x, rec.y, rec.width, rec.height);
         }
