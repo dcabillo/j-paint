@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.awt.Rectangle;
 
 public class ShapeCollection {
-    //Will have to add in all shapes in future
+    //Will have to add in all shapes in future. This is simply a stack of all shapes generated.
     private static ShapeCollection instance = null;
     private final ArrayList<Rectangle> rectangles;
     //creating a sliding index for undo/redo
