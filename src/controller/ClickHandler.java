@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import view.gui.PaintCanvas;
+import controller.Point;
 
 public class ClickHandler extends MouseAdapter {
 
@@ -16,15 +17,12 @@ public class ClickHandler extends MouseAdapter {
     }
 
     public void mousePressed(MouseEvent e) {
-        startPoint = new Point();
-        startPoint.x = e.getX();
-        startPoint.y = e.getY();
+        startPoint = new Point(e.getX(), e.getY());
+
     }
 
     public void mouseReleased(MouseEvent e) {
-        endPoint = new Point();
-        endPoint.x = e.getX();
-        endPoint.y = e.getY();
+        endPoint = new Point(e.getX(), e.getY());
 
         int width = Math.abs(endPoint.x - startPoint.x);
         int height = Math.abs(endPoint.y - startPoint.y);
@@ -34,7 +32,3 @@ public class ClickHandler extends MouseAdapter {
 }
 
 
-class Point {
-    public int x;
-    public int y;
-}

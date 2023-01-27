@@ -11,6 +11,7 @@ public class RedoCommand {
     }
 
     public void redo() {
+        // shifting the index on the stack and repainting
         shapes.redoRectangle();
         paintCanvas.repaint();
     }
