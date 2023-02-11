@@ -1,17 +1,20 @@
 package view.gui;
 
+import view.IShape;
+
+
 import java.util.ArrayList;
 import java.awt.Rectangle;
 
 public class ShapeCollection {
     //Will have to add in all shapes in future. This is simply a stack of all shapes generated.
     private static ShapeCollection instance = null;
-    private final ArrayList<Rectangle> rectangles;
+    private final ArrayList<IShape> shapes;
     //creating a sliding index for undo/redo
     private int indx = 0;
 
     private ShapeCollection() {
-        rectangles = new ArrayList<>();
+        shapes = new ArrayList<>();
     }
 
     public static ShapeCollection getInstance() {
@@ -22,16 +25,16 @@ public class ShapeCollection {
         return instance;
     }
 
-    public void addRectangle(Rectangle rectangle) {
+    public void addShape(IShape shape) {
         //if a new shape is added after undoing, the stack will drop what could have been redone. This clears the "cache" and simplifies the redo action
-        if (indx != rectangles.size()-1){
-            rectangles.subList(indx, rectangles.size()).clear();
+        if (indx != shapes.size()-1){
+            shapes.subList(indx, shapes.size()).clear();
         }
-        rectangles.add(rectangle);
+        shapes.add(shape);
         indx += 1;
     }
 
-    public void removeRectangle() {
+    public void removeShape() {
         //lower bounding undo
         if (indx > 0){
             indx -= 1;
@@ -39,15 +42,15 @@ public class ShapeCollection {
 
     }
 
-    public void redoRectangle() {
+    public void redoShape() {
         //upper bounding redo
-        if (indx < rectangles.size()) {
+        if (indx < shapes.size()) {
             indx += 1;
         }
     }
 
-    public ArrayList<Rectangle> getRectangles() {
+    public ArrayList<IShape> getShapes() {
         //return just the list
-        return new ArrayList<>(rectangles.subList(0, indx));
+        return new ArrayList<>(shapes.subList(0, indx));
     }
 }

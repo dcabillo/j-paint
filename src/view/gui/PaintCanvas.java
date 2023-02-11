@@ -1,5 +1,7 @@
 package view.gui;
 
+import view.IShape;
+
 import javax.swing.JComponent;
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,8 +12,9 @@ public class PaintCanvas extends JComponent {
     ShapeCollection shapes = ShapeCollection.getInstance();
 
     public void drawRectangle(int x, int y, int width, int height) {
-        Rectangle rec = new Rectangle(x, y, width, height);
-        shapes.addRectangle(rec);
+        Ellipse ellipse = new Ellipse(x, y, width, height);
+        IShape shape = new Shape(ellipse);
+        shapes.addShape(shape);
         repaint();
     }
     @Override
@@ -20,9 +23,8 @@ public class PaintCanvas extends JComponent {
 
         // For example purposes only; remove all lines below from your final project.
         // Draw all shapes here
-        for (Rectangle rec: shapes.getRectangles()) {
-            graphics2d.setColor(Color.GREEN);
-            graphics2d.fillRect(rec.x, rec.y, rec.width, rec.height);
+        for (IShape shape: shapes.getShapes()) {
+            shape.draw(graphics2d);
         }
     }
 }
