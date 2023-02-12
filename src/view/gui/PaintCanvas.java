@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class PaintCanvas extends JComponent {
     ShapeCollection shapes = ShapeCollection.getInstance();
 
-    public void drawShape(IDrawShape shape, Color color) {
-        IShape shapeSelection = new Shape(shape, color);
+    public void drawShape(IDrawShape shape, Color primaryColor, Color secondaryColor, String shading) {
+        IShape shapeSelection = new Shape(shape, primaryColor, secondaryColor, shading);
         shapes.addShape(shapeSelection);
         repaint();
     }

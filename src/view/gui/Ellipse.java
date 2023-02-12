@@ -18,11 +18,11 @@ public class Ellipse implements IDrawShape {
 
     }
     public void draw(Graphics2D g2d) {
-        g2d.fillOval(this.sx, this.sy, this.width, this.height);
+        g2d.drawOval(this.sx, this.sy, this.width, this.height);
     }
 
     public void fill(Graphics2D g2d) {
-        g2d.drawOval(this.sx, this.sy, this.width, this.height);
+        g2d.fillOval(this.sx, this.sy, this.width, this.height);
     }
 }
 

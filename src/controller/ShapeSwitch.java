@@ -9,13 +9,19 @@ import view.gui.Triangle;
 import java.awt.Color;
 import model.*;
 
+import javax.swing.plaf.synth.ColorType;
+
 
 public class ShapeSwitch {
     ShapeType shape;
-    ShapeColor color;
+    ShapeColor primaryColor;
+    ShapeColor secondaryColor;
+    ShapeShadingType shading;
     public ShapeSwitch(ApplicationState applicationState){
         this.shape = applicationState.getActiveShapeType();
-        this.color = applicationState.getActivePrimaryColor();
+        this.primaryColor = applicationState.getActivePrimaryColor();
+        this.secondaryColor = applicationState.getActiveSecondaryColor();
+        this.shading = applicationState.getActiveShapeShadingType();
 
     }
 
@@ -32,8 +38,8 @@ public class ShapeSwitch {
                 return rec;
         }
     }
-    public Color getColor() {
-        switch (this.color) {
+    public Color getColor(ShapeColor color) {
+        switch (color) {
             case BLUE:
                 return Color.BLUE;
             case CYAN:
@@ -61,6 +67,25 @@ public class ShapeSwitch {
             default:
                 return Color.BLACK;
         }
+    }
+
+
+    public String getShading(){
+        switch (this.shading){
+            case OUTLINE:
+                return "OUTLINED";
+            case OUTLINE_AND_FILLED_IN:
+                return "OUTLINE_AND_FILLED_IN";
+            default:
+                return "FILLED_IN";
+        }
+    }
+
+    public Color getPrimary() {
+        return getColor(this.primaryColor);
+    }
+    public Color getSecondary() {
+        return getColor(this.secondaryColor);
     }
 }
 
