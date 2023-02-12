@@ -5,10 +5,10 @@ import view.IDrawShape;
 import java.awt.*;
 
 public class Rectangle implements IDrawShape {
-    private int width;
-    private int height;
-    private int sx;
-    private int sy;
+    public int width;
+    public int height;
+    public int sx;
+    public int sy;
 
     public Rectangle(int sx, int sy, int width, int height) {
         this.width = width;
@@ -18,6 +18,11 @@ public class Rectangle implements IDrawShape {
     }
     public void draw(Graphics2D g2d) {
         g2d.drawRect(this.sx, this.sy, this.width, this.height);
+    }
+
+    public int[] getCoords(){
+        int[] coordArray = new int[] {this.sx, this.sy, this.sx+this.width, this.sy+this.height};
+        return coordArray;
     }
 
     public void fill(Graphics2D g2d) {

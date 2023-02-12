@@ -53,4 +53,10 @@ public class ShapeCollection {
         //return just the list
         return new ArrayList<>(shapes.subList(0, indx));
     }
+
+    public void setSelectedShapes(int start_x, int start_y, int end_x, int end_y) {
+        for (IShape shape: shapes) {
+            shape.checkSelected(start_x, start_y, end_x, end_y);
+        }
+    }
 }

@@ -10,12 +10,14 @@ public class Shape implements IShape {
     private Color primaryColor;
     private Color secondaryColor;
     private String shading;
+    private boolean selected;
 
     public Shape(IDrawShape shape, Color primaryColor, Color secondaryColor, String shading){
         this.primaryColor = primaryColor;
         this.secondaryColor = secondaryColor;
         this.shape = shape;
         this.shading = shading;
+        this.selected = false;
     }
 
 
@@ -36,6 +38,14 @@ public class Shape implements IShape {
                 this.shape.fill(g2d);
                 break;
 
+        }
+    }
+
+    public void checkSelected(int start_x, int start_y, int end_x, int end_y) {
+        // need to fix the declaration here
+        int[] coordinates = this.shape.getCoords();
+        if (coordinates[0] <= end_x && coordinates[2] >= start_x && coordinates[1] <= end_y && coordinates[3]>=start_y){
+            this.selected = true;
         }
     }
 
