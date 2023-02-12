@@ -1,5 +1,6 @@
 package view.gui;
 
+import view.IDrawShape;
 import view.IShape;
 
 import javax.swing.JComponent;
@@ -11,10 +12,9 @@ import java.util.ArrayList;
 public class PaintCanvas extends JComponent {
     ShapeCollection shapes = ShapeCollection.getInstance();
 
-    public void drawRectangle(int x, int y, int width, int height) {
-        Ellipse ellipse = new Ellipse(x, y, width, height);
-        IShape shape = new Shape(ellipse);
-        shapes.addShape(shape);
+    public void drawShape(IDrawShape shape) {
+        IShape shapeSelection = new Shape(shape);
+        shapes.addShape(shapeSelection);
         repaint();
     }
     @Override

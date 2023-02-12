@@ -19,12 +19,13 @@ import java.util.EnumMap;
 public class Main {
     public static void main(String[] args){
         PaintCanvas paintCanvas = new PaintCanvas();
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas));
+
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
         ApplicationState appState = new ApplicationState(uiModule);
         IJPaintController controller = new JPaintController(uiModule, appState, paintCanvas);
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, appState));
 
         controller.setup();
     }

@@ -9,8 +9,8 @@ public class Triangle implements IDrawShape {
     private int[] yPoints;
 
     public Triangle(int sx, int sy, int width, int height) {
-        int[] x = {sx, sx - width, width};
-        int[] y = {height, sy , height};
+        int[] x = {sx, sx, sx+width};
+        int[] y = {sy, sy+height , sy+height};
         this.xPoints= x;
         this.yPoints = y;
     }
