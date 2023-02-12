@@ -17,12 +17,10 @@ public class Rectangle implements IDrawShape {
         this.sy = sy;
     }
     public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.GREEN);
         g2d.fillRect(this.sx, this.sy, this.width, this.height);
     }
 
     public void fill(Graphics2D g2d) {
-        g2d.setColor(Color.GREEN);
         g2d.drawRect(this.sx, this.sy, this.width, this.height);
     }
 }

@@ -36,7 +36,8 @@ public class ClickHandler extends MouseAdapter {
         ShapeSwitch swich = new ShapeSwitch(this.appState);
 
         IDrawShape shape = swich.getShape(Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y), width, height);
-        paintCanvas.drawShape(shape);
+        Color color = swich.getColor();
+        paintCanvas.drawShape(shape, color);
     }
 }
 

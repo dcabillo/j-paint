@@ -15,12 +15,10 @@ public class Triangle implements IDrawShape {
         this.yPoints = y;
     }
     public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.GREEN);
         g2d.fillPolygon(this.xPoints, this.yPoints, 3);
     }
 
     public void fill(Graphics2D g2d) {
-        g2d.setColor(Color.GREEN);
         g2d.drawPolygon(this.xPoints, this.yPoints, 3);
     }
 }
