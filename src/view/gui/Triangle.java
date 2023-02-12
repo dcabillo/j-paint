@@ -1,6 +1,7 @@
 package view.gui;
 
 import view.IDrawShape;
+import model.*;
 
 import java.awt.*;
 
@@ -32,5 +33,9 @@ public class Triangle implements IDrawShape {
 
     public void fill(Graphics2D g2d) {
         g2d.fillPolygon(this.xPoints, this.yPoints, 3);
+    }
+
+    public ShapeType getShapeType(){
+        return ShapeType.TRIANGLE;
     }
 }

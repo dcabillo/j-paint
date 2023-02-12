@@ -3,6 +3,7 @@ package controller;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import model.persistence.ApplicationState;
 import view.IDrawShape;
@@ -49,7 +50,14 @@ public class ClickHandler extends MouseAdapter {
         else if (appState.getActiveMouseMode() == MouseMode.SELECT){
             paintCanvas.selectShapes(Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y), Math.max(startPoint.x, endPoint.x), Math.max(startPoint.y, endPoint.y));
         }
- 
+        else if (appState.getActiveMouseMode() == MouseMode.MOVE) {
+            ArrayList<Integer> selected = paintCanvas.getSelectedList();
+            ArrayList<ShapeType> shapes = paintCanvas.findShapes(selected);
+            ArrayList<int[]> coords = paintCanvas.getCoords(selected);
+            int dx = endPoint.x - startPoint.x;
+            int dy = endPoint.y - startPoint.y;
+
+        }
 
     }
 

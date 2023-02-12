@@ -1,6 +1,7 @@
 package view.gui;
 
 import view.IDrawShape;
+import model.*;
 
 import java.awt.*;
 
@@ -27,6 +28,10 @@ public class Ellipse implements IDrawShape {
 
     public void fill(Graphics2D g2d) {
         g2d.fillOval(this.sx, this.sy, this.width, this.height);
+    }
+
+    public ShapeType getShapeType(){
+        return ShapeType.ELLIPSE;
     }
 }
 

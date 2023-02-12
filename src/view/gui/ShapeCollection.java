@@ -1,6 +1,8 @@
 package view.gui;
 
+import view.IDrawShape;
 import view.IShape;
+import model.*;
 
 
 import java.util.ArrayList;
@@ -59,4 +61,27 @@ public class ShapeCollection {
             shape.checkSelected(start_x, start_y, end_x, end_y);
         }
     }
+
+    public ArrayList findSelected() {
+        int index = 0;
+        ArrayList<Integer> selectedValues = new ArrayList<>();
+        for (IShape shape: shapes) {
+            if (shape.isSelected()){
+                selectedValues.add(index);
+            }
+            index+=1;
+        }
+        return selectedValues;
+    }
+
+    public ShapeType getShapeIndex(int index) {
+        IShape shape = shapes.get(index);
+        return shape.getShape();
+    }
+
+    public int[] getCoorIndex(int index) {
+        IShape shape = shapes.get(index);
+        return shape.getCoord();
+    }
+
 }

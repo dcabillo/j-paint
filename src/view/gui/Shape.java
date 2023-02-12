@@ -2,6 +2,7 @@ package view.gui;
 
 import view.IDrawShape;
 import view.IShape;
+import model.*;
 
 import java.awt.*;
 
@@ -45,8 +46,19 @@ public class Shape implements IShape {
         // need to fix the declaration here
         int[] coordinates = this.shape.getCoords();
         if (coordinates[0] <= end_x && coordinates[2] >= start_x && coordinates[1] <= end_y && coordinates[3]>=start_y){
+            System.out.println("Sanity Check");
             this.selected = true;
         }
+    }
+
+    public boolean isSelected(){
+        return this.selected;
+    }
+    public ShapeType getShape() {
+        return this.shape.getShapeType();
+    }
+    public int[] getCoord() {
+        return this.shape.getCoords();
     }
 
 }
