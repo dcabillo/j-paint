@@ -8,9 +8,9 @@ import java.awt.*;
 
 public class Shape implements IShape {
     private IDrawShape shape;
-    private Color primaryColor;
-    private Color secondaryColor;
-    private String shading;
+    public Color primaryColor;
+    public Color secondaryColor;
+    public String shading;
     private boolean selected;
 
     public Shape(IDrawShape shape, Color primaryColor, Color secondaryColor, String shading){
@@ -49,11 +49,20 @@ public class Shape implements IShape {
             System.out.println("Sanity Check");
             this.selected = true;
         }
+        else {
+            this.selected = false;
+        }
+    }
+    public void selectShape() {
+        this.selected = true;
     }
 
     public boolean isSelected(){
         return this.selected;
     }
+    public Color getPrimaryColor() {return this.primaryColor;}
+    public Color getSecondaryColor() {return this.secondaryColor;}
+    public String getShadingType() {return this.shading;}
     public ShapeType getShape() {
         return this.shape.getShapeType();
     }

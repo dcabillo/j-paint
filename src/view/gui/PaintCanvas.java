@@ -37,13 +37,14 @@ public class PaintCanvas extends JComponent {
         ArrayList<Integer> selected = shapes.findSelected();
         return selected;
     }
-    public ArrayList<ShapeType> findShapes(ArrayList<Integer> selected) {
-        ArrayList<ShapeType> shapeReplace = new ArrayList<>();
+    public ArrayList<IShape> findShapes(ArrayList<Integer> selected) {
+        ArrayList<IShape> shapeReplace = new ArrayList<>();
         for (Integer idx: selected) {
             shapeReplace.add(shapes.getShapeIndex(idx));
         }
         return shapeReplace;
     }
+
 
     public ArrayList<int[]> getCoords(ArrayList<Integer> selected){
         ArrayList<int[]> coords = new ArrayList<>();
@@ -51,6 +52,16 @@ public class PaintCanvas extends JComponent {
             coords.add(shapes.getCoorIndex(idx));
         }
         return coords;
+    }
+
+    public void replaceShape(Integer idx, IDrawShape newShape, Color primaryColor, Color secondaryColor, String shading) {
+        IShape newShapeSelection = new Shape(newShape, primaryColor, secondaryColor, shading);
+        newShapeSelection.selectShape();
+        shapes.replaceShape(idx, newShapeSelection);
+    }
+
+    public IShape getShape(Integer idx) {
+        return shapes.getShapeIndex(idx);
     }
 
 

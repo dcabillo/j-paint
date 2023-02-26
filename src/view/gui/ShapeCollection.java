@@ -74,9 +74,13 @@ public class ShapeCollection {
         return selectedValues;
     }
 
-    public ShapeType getShapeIndex(int index) {
+    public IShape getShapeIndex(int index) {
         IShape shape = shapes.get(index);
-        return shape.getShape();
+        return shape;
+    }
+
+    public void replaceShape(Integer idx, IShape shape) {
+        shapes.set(idx, shape);
     }
 
     public int[] getCoorIndex(int index) {
