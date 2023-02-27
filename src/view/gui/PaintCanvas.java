@@ -7,7 +7,7 @@ import model.*;
 import javax.swing.JComponent;
 import java.awt.*;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 
 public class PaintCanvas extends JComponent {
@@ -55,10 +55,9 @@ public class PaintCanvas extends JComponent {
         return coords;
     }
 
-    public void replaceShape(Integer idx, IDrawShape newShape, Color primaryColor, Color secondaryColor, String shading) {
-        IShape newShapeSelection = new Shape(newShape, primaryColor, secondaryColor, shading);
-        newShapeSelection.selectShape();
-        shapes.replaceShape(idx, newShapeSelection);
+    public void replaceShape(HashMap<Integer, IShape> shiftedShapes) {
+        shapes.replaceShape(shiftedShapes);
+        repaint();
     }
 
     public IShape getShape(Integer idx) {

@@ -3,13 +3,14 @@ package controller;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.*;
 
 import model.persistence.ApplicationState;
 import view.IDrawShape;
 import view.IShape;
 import view.gui.PaintCanvas;
 import model.*;
+import view.gui.Shape;
 import view.gui.ShapeCollection;
 
 public class ClickHandler extends MouseAdapter {
@@ -56,6 +57,7 @@ public class ClickHandler extends MouseAdapter {
         }
         else if (appState.getActiveMouseMode() == MouseMode.MOVE) {
             ArrayList<Integer> selected = paintCanvas.getSelectedList();
+            HashMap<Integer, IShape> shiftedShapes = new HashMap<Integer, IShape>();
             int dx = endPoint.x - startPoint.x;
             int dy = endPoint.y - startPoint.y;
             for (Integer idx: selected) {
@@ -70,8 +72,10 @@ public class ClickHandler extends MouseAdapter {
                 int sx = coordinates[0] + dx;
                 int sy = coordinates[1] + dy;
                 ShapeFactory shape = new ShapeFactory(type, sx, sy, width, height);
-                paintCanvas.replaceShape(idx, shape.getShape(), primaryColor, secondaryColor, shading);
+                IShape newShape = new Shape(shape.getShape(), primaryColor, secondaryColor, shading);
+                shiftedShapes.put(idx, newShape);
             }
+            paintCanvas.replaceShape(shiftedShapes);
             paintCanvas.repaint();
 
         }

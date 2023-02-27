@@ -7,6 +7,8 @@ import model.*;
 
 import java.util.ArrayList;
 import java.awt.Rectangle;
+import java.util.*;
+import java.util.Map;
 
 public class ShapeCollection {
     //Will have to add in all shapes in future. This is simply a stack of all shapes generated.
@@ -86,9 +88,15 @@ public class ShapeCollection {
         return shape;
     }
 
-    public void replaceShape(Integer idx, IShape shape) {
-        shapes.set(idx, shape);
+    public void replaceShape(HashMap<Integer, IShape> shiftedShapes) {
+        for (Map.Entry<Integer, IShape> entry : shiftedShapes.entrySet()) {
+            Integer key = entry.getKey();
+            IShape value = entry.getValue();
+            value.selectShape();
+            shapes.set(key, value);
+        }
         history.addState(new ArrayList<>(shapes));
+
     }
 
     public void delete(){
