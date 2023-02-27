@@ -40,6 +40,10 @@ public class Shape implements IShape {
                 break;
 
         }
+        if (this.selected) {
+            g2d.setColor(Color.BLACK);
+            this.shape.highlight(g2d);
+        }
     }
 
     public void checkSelected(int start_x, int start_y, int end_x, int end_y) {

@@ -21,5 +21,10 @@ public class Clipboard {
         clipboard.add(shape);
     }
 
+    public ArrayList<IShape> getShapes() {
+        //return just the list
+        return clipboard;
+    }
+
 
 }

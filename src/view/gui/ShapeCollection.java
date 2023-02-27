@@ -104,6 +104,11 @@ public class ShapeCollection {
         history.addState(new ArrayList<>(shapes));
     }
 
+    public void copy(ArrayList<IShape> copyList){
+        shapes.addAll(copyList);
+        history.addState(new ArrayList<>(shapes));
+    }
+
     public int[] getCoorIndex(int index) {
         IShape shape = shapes.get(index);
         return shape.getCoord();

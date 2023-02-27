@@ -8,6 +8,7 @@ import view.gui.Rectangle;
 import view.gui.Triangle;
 import java.awt.Color;
 import model.*;
+import controller.ShapeFactory;
 
 import javax.swing.plaf.synth.ColorType;
 
@@ -26,32 +27,11 @@ public class ShapeSwitch {
     }
 
     public IDrawShape getShape(int sx, int sy, int width, int height) {
-        switch (this.shape) {
-            case TRIANGLE:
-                IDrawShape tri = new Triangle(sx, sy, width, height);
-                return tri;
-            case ELLIPSE:
-                IDrawShape ellipse = new Ellipse(sx, sy, width, height);
-                return ellipse;
-            default:
-                IDrawShape rec = new Rectangle(sx, sy, width, height);
-                return rec;
-        }
+        ShapeFactory shape = new ShapeFactory(this.shape, sx, sy, width, height);
+        return shape.getShape();
     }
 
-    public IDrawShape getNewShape(int sx, int sy, int width, int height, ShapeType type){
-        switch (type) {
-            case TRIANGLE:
-                IDrawShape tri = new Triangle(sx, sy, width, height);
-                return tri;
-            case ELLIPSE:
-                IDrawShape ellipse = new Ellipse(sx, sy, width, height);
-                return ellipse;
-            default:
-                IDrawShape rec = new Rectangle(sx, sy, width, height);
-                return rec;
-        }
-    }
+
 
     public Color getColor(ShapeColor color) {
         switch (color) {
