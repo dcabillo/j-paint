@@ -37,19 +37,10 @@ public class ShapeCollection {
         history.addState(new ArrayList<>(shapes));
     }
 
-    public void removeShape() {
-        //lower bounding undo
-        if (indx > 0){
-            indx -= 1;
-        }
-
-    }
 
     public void setShapes(ArrayList<IShape> currentState) {
         shapes.clear();
-        for (IShape shape: currentState) {
-            shapes.add(shape);
-        }
+        shapes.addAll(currentState);
     }
 
     public void undoShape() {
@@ -97,7 +88,20 @@ public class ShapeCollection {
 
     public void replaceShape(Integer idx, IShape shape) {
         shapes.set(idx, shape);
-        history.addState(shapes);
+        history.addState(new ArrayList<>(shapes));
+    }
+
+    public void delete(){
+        int idx = 0;
+        while(idx<shapes.size()){
+            if (shapes.get(idx).isSelected()) {
+                shapes.remove(idx);
+            }
+            else {
+                idx+=1;
+            }
+        }
+        history.addState(new ArrayList<>(shapes));
     }
 
     public int[] getCoorIndex(int index) {

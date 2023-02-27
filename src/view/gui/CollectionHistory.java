@@ -22,7 +22,7 @@ public class CollectionHistory {
 
     public void addState(ArrayList<IShape> state) {
         if (indx != history.size()-1) {
-            history.subList(indx, history.size()).clear();
+            history.subList(indx+1, history.size()).clear();
         }
 
         history.add(state);
