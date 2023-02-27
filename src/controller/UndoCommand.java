@@ -13,7 +13,7 @@ public class UndoCommand {
 
     public void undo() {
         // shifting the index on the stack and repainting
-        shapes.removeShape();
+        shapes.undoShape();
         paintCanvas.repaint();
     }
 }
