@@ -13,3 +13,10 @@ Design patterns : Abstract Factory. ClickHandler calls getShape in ShapeSwitch t
 Observer pattern is implemented by the Click handler and notifies the PaintCanvas to change shape collection
 
 Needed more time to analyze, identify, and implement more patterns
+
+Check-in 3: 
+Patterns: 
+1. Adapter pattern implemented in the Shape class. I think there is an arguement to be made that the adapter pattern is present for all shape types due to the draw method. i.e. using a custom method to call third party drawing functionality. It is especially present with the Triangle class because the code allows for the same inputs to be pushed into REC, TRI, and ELLIPSE, even though the third party draw function for triangle takes in 2 arrays, rather than the standard corners my code takes in. 
+2. Singleton Design Pattern is implemented in the CollectionHistory Class and in the ShapeCollection Class. These classes can only be instantiated by themselves.
+3. Abstract Factory pattern. Here we have an IDrawShape interface that creates 3 typed of shapes based on the Factory called. This can all be initiated in the Shape Factory class.
+4. Observer pattern is implemented by the Click handler
