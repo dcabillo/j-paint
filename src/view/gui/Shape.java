@@ -50,7 +50,6 @@ public class Shape implements IShape {
         // need to fix the declaration here
         int[] coordinates = this.shape.getCoords();
         if (coordinates[0] <= end_x && coordinates[2] >= start_x && coordinates[1] <= end_y && coordinates[3]>=start_y){
-            System.out.println("Sanity Check");
             this.selected = true;
         }
         else {

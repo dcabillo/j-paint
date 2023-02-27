@@ -56,8 +56,6 @@ public class ClickHandler extends MouseAdapter {
         }
         else if (appState.getActiveMouseMode() == MouseMode.MOVE) {
             ArrayList<Integer> selected = paintCanvas.getSelectedList();
-            ArrayList<IShape> shapes = paintCanvas.findShapes(selected);
-            ArrayList<int[]> coords = paintCanvas.getCoords(selected);
             int dx = endPoint.x - startPoint.x;
             int dy = endPoint.y - startPoint.y;
             for (Integer idx: selected) {
