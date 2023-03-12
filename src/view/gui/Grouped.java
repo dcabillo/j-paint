@@ -69,12 +69,7 @@ public class Grouped implements IShape {
     public boolean isSelected() {
         return this.selected;
     }
-    public Color getPrimaryColor() {return Color.red;}
-    public Color getSecondaryColor() {return Color.red;}
-    public String getShadingType() {return "none";}
-    public ShapeType getShape() {
-        return ShapeType.RECTANGLE;
-    }
+
 
     public void moveShape(int dx, int dy) {
         for (IShape shape: group) {
@@ -85,6 +80,14 @@ public class Grouped implements IShape {
     }
     public int[] getCoord() {
         return this.coordinates;
+    }
+
+    public IShape copyShape() {
+        IShape newGroup = new Grouped(this.sx + 50, this.sy+50, this.width+this.sx+50, this.height+this.sy+50);
+        for (IShape shape: group) {
+            newGroup.addShape(shape.copyShape());
+        }
+        return newGroup;
     }
 
 }

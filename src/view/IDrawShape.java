@@ -8,7 +8,7 @@ public interface IDrawShape {
     void fill(Graphics2D g2d);
     void highlight(Graphics2D g2d);
     int[] getCoords();
-    ShapeType getShapeType();
     void move(int dx, int dy);
+    IDrawShape copyType();
 
 }

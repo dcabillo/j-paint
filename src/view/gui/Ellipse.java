@@ -41,9 +41,11 @@ public class Ellipse implements IDrawShape {
         this.sx += dx;
         this.sy += dy;
     }
-
-    public ShapeType getShapeType(){
-        return ShapeType.ELLIPSE;
+    public IDrawShape copyType() {
+        IDrawShape copy = new Ellipse(this.sx+50, this.sy+50, this.width, this.height);
+        return copy;
     }
+
+
 }
 

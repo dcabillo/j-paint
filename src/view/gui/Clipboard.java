@@ -20,6 +20,7 @@ public class Clipboard {
     public void addShape(IShape shape) {
         clipboard.add(shape);
     }
+    public void clear() {clipboard.clear();}
 
     public ArrayList<IShape> getShapes() {
         //return just the list

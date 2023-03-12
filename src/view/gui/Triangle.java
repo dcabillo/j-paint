@@ -47,9 +47,6 @@ public class Triangle implements IDrawShape {
         g2d.drawPolygon(this.HLxPoints, this.HLyPoints, 3);
     }
 
-    public ShapeType getShapeType(){
-        return ShapeType.TRIANGLE;
-    }
 
     public void move(int dx, int dy) {
         this.sx += dx;
@@ -66,5 +63,9 @@ public class Triangle implements IDrawShape {
         this.HLyPoints[0] += dy;
         this.HLyPoints[1] += dy;
         this.HLyPoints[2] += dy;
+    }
+    public IDrawShape copyType() {
+        IDrawShape copy = new Triangle(this.sx+50, this.sy+50, this.width, this.height);
+        return copy;
     }
 }

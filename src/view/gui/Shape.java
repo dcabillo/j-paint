@@ -44,6 +44,7 @@ public class Shape implements IShape {
         if (this.selected) {
             g2d.setColor(Color.BLACK);
             this.shape.highlight(g2d);
+            g2d.setStroke(new BasicStroke(2.0f));
         }
     }
 
@@ -74,15 +75,16 @@ public class Shape implements IShape {
     public void moveShape(int dx, int dy){
         shape.move(dx, dy);
     };
+    public IShape copyShape() {
+        IDrawShape newShape = this.shape.copyType();
+        IShape copy = new Shape(newShape, this.primaryColor, this.secondaryColor, this.shading);
+        return copy;
+
+    }
     public boolean isSelected(){
         return this.selected;
     }
-    public Color getPrimaryColor() {return this.primaryColor;}
-    public Color getSecondaryColor() {return this.secondaryColor;}
-    public String getShadingType() {return this.shading;}
-    public ShapeType getShape() {
-        return this.shape.getShapeType();
-    }
+
     public int[] getCoord() {
         return this.shape.getCoords();
     }

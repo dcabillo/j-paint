@@ -11,7 +11,6 @@ public class UngroupCommand {
     }
 
     public void ungroup() {
-        System.out.println("here");
         shapes.unGroup();
         paintCanvas.repaint();
     }

@@ -91,24 +91,6 @@ public class ShapeCollection {
     }
 
 
-    public ArrayList findSelected() {
-        int index = 0;
-        ArrayList<Integer> selectedValues = new ArrayList<>();
-        for (IShape shape: shapes) {
-            if (shape.isSelected()){
-                selectedValues.add(index);
-            }
-            index+=1;
-        }
-        return selectedValues;
-    }
-
-    public IShape getShapeIndex(int index) {
-        IShape shape = shapes.get(index);
-        return shape;
-    }
-
-
     public void delete(){
         int idx = 0;
         while(idx<shapes.size()){
@@ -122,7 +104,7 @@ public class ShapeCollection {
         history.addState(new ArrayList<>(shapes));
     }
 
-    public void copy(ArrayList<IShape> copyList){
+    public void paste(ArrayList<IShape> copyList){
         shapes.addAll(copyList);
         history.addState(new ArrayList<>(shapes));
     }
@@ -165,6 +147,16 @@ public class ShapeCollection {
                 shape.moveShape(dx, dy);
             }
         }
+    }
+    public ArrayList<IShape> copy() {
+        ArrayList<IShape> copies = new ArrayList<>();
+        for (IShape shape: shapes) {
+            if (shape.isSelected()) {
+                IShape copy = shape.copyShape();
+                copies.add(copy);
+            }
+        }
+        return copies;
     }
 
 }

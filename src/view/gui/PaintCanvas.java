@@ -25,6 +25,7 @@ public class PaintCanvas extends JComponent {
         // For example purposes only; remove all lines below from your final project.
         // Draw all shapes here
         for (IShape shape: shapes.getShapes()) {
+            graphics2d.setStroke(new BasicStroke(2.0f));
             shape.draw(graphics2d);
         }
     }
@@ -34,26 +35,14 @@ public class PaintCanvas extends JComponent {
         repaint();
     }
 
-    public ArrayList<Integer> getSelectedList() {
-        ArrayList<Integer> selected = shapes.findSelected();
-        return selected;
-    }
 
-
-
-
-
-
-    public IShape getShape(Integer idx) {
-        return shapes.getShapeIndex(idx);
-    }
 
     public void moveShape(int dx, int dy) {
         shapes.moveShape(dx, dy);
     }
 
     public void copyList(ArrayList<IShape> copyList) {
-        shapes.copy(copyList);
+        shapes.paste(copyList);
         repaint();
     }
 

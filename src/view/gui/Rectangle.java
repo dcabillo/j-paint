@@ -40,13 +40,14 @@ public class Rectangle implements IDrawShape {
     }
 
 
-    public ShapeType getShapeType(){
-        return ShapeType.RECTANGLE;
-    }
-
     public void move(int dx, int dy) {
         this.sx += dx;
         this.sy += dy;
+    }
+
+    public IDrawShape copyType() {
+        IDrawShape copy = new Rectangle(this.sx+50, this.sy+50, this.width, this.height);
+        return copy;
     }
 }
 

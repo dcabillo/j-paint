@@ -2,22 +2,25 @@ package controller;
 import view.IShape;
 import view.gui.PaintCanvas;
 import view.gui.Clipboard;
+import view.gui.ShapeCollection;
 
 import java.util.ArrayList;
 
 public class CopyCommand {
-    private final PaintCanvas paintCanvas;
+    ShapeCollection shapes = ShapeCollection.getInstance();
     Clipboard clipboard = Clipboard.getInstance();
-    public CopyCommand(PaintCanvas paintCanvas) {
-        this.paintCanvas = paintCanvas;
+
+    ArrayList<IShape> clip = new ArrayList<>();
+
+    public CopyCommand() {
     }
 
     public void copy() {
-        ArrayList<Integer> selected = paintCanvas.getSelectedList();
-        for (Integer idx: selected) {
-            IShape shape = paintCanvas.getShape(idx);
+        clip = shapes.copy();
+        clipboard.clear();
+        for (IShape shape:clip) {
             clipboard.addShape(shape);
         }
-
     }
+
 }
