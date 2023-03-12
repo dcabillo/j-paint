@@ -46,6 +46,10 @@ public class Shape implements IShape {
         }
     }
 
+    public void addShape(IShape shape) {
+
+    }
+
     public void checkSelected(int start_x, int start_y, int end_x, int end_y) {
         // need to fix the declaration here
         int[] coordinates = this.shape.getCoords();
@@ -59,7 +63,12 @@ public class Shape implements IShape {
     public void selectShape() {
         this.selected = true;
     }
-
+    public void unselectShape() {
+        this.selected = false;
+    }
+    public void moveShape(int dx, int dy){
+        shape.move(dx, dy);
+    };
     public boolean isSelected(){
         return this.selected;
     }

@@ -117,6 +117,47 @@ public class ShapeCollection {
         history.addState(new ArrayList<>(shapes));
     }
 
+    public void group() {
+        int idx = 0;
+        int min_x = Integer.MAX_VALUE;
+        int min_y = Integer.MAX_VALUE;
+        int max_x = Integer.MIN_VALUE;
+        int max_y = Integer.MIN_VALUE;
+
+        for (IShape shape:shapes){
+            if (shape.isSelected()) {
+                int[] coordinates = shape.getCoord();
+                min_x = Math.min(coordinates[0], min_x);
+                min_y = Math.min(coordinates[1], min_y);
+                max_x = Math.max(coordinates[2], max_x);
+                max_y = Math.max(coordinates[3], max_y);
+            }
+        }
+        IShape group = new Grouped(min_x, min_y, max_x, max_y);
+        while(idx<shapes.size()){
+            if (shapes.get(idx).isSelected()) {
+                System.out.println(idx);
+                group.addShape(shapes.get(idx));
+                shapes.remove(idx);
+            }
+            else {
+                idx+=1;
+            }
+
+        }
+
+        shapes.add(group);
+        history.addState(new ArrayList<>(shapes));
+    }
+
+    public void moveShape(int dx, int dy) {
+        for (IShape shape: shapes) {
+            if (shape.isSelected()){
+                shape.moveShape(dx, dy);
+            }
+        }
+    }
+
     public int[] getCoorIndex(int index) {
         IShape shape = shapes.get(index);
         return shape.getCoord();

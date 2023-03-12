@@ -13,5 +13,8 @@ public interface IShape {
     ShapeType getShape();
     void selectShape();
     int[] getCoord();
+    public void addShape(IShape shape);
+    public void unselectShape();
+    public void moveShape( int dx, int dy);
 
 }

@@ -43,5 +43,10 @@ public class Rectangle implements IDrawShape {
     public ShapeType getShapeType(){
         return ShapeType.RECTANGLE;
     }
+
+    public void move(int dx, int dy) {
+        this.sx += dx;
+        this.sy += dy;
+    }
 }
 

@@ -9,5 +9,6 @@ public interface IDrawShape {
     void highlight(Graphics2D g2d);
     int[] getCoords();
     ShapeType getShapeType();
+    void move(int dx, int dy);
 
 }
