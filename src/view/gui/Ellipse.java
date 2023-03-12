@@ -37,6 +37,11 @@ public class Ellipse implements IDrawShape {
         g2d.drawOval(this.sx-5, this.sy-5, this.width+10, this.height+10);
     }
 
+    public void move(int dx, int dy) {
+        this.sx += dx;
+        this.sy += dy;
+    }
+
     public ShapeType getShapeType(){
         return ShapeType.ELLIPSE;
     }

@@ -38,30 +38,18 @@ public class PaintCanvas extends JComponent {
         ArrayList<Integer> selected = shapes.findSelected();
         return selected;
     }
-    public ArrayList<IShape> findShapes(ArrayList<Integer> selected) {
-        ArrayList<IShape> shapeReplace = new ArrayList<>();
-        for (Integer idx: selected) {
-            shapeReplace.add(shapes.getShapeIndex(idx));
-        }
-        return shapeReplace;
-    }
 
 
-    public ArrayList<int[]> getCoords(ArrayList<Integer> selected){
-        ArrayList<int[]> coords = new ArrayList<>();
-        for (Integer idx: selected) {
-            coords.add(shapes.getCoorIndex(idx));
-        }
-        return coords;
-    }
 
-    public void replaceShape(HashMap<Integer, IShape> shiftedShapes) {
-        shapes.replaceShape(shiftedShapes);
-        repaint();
-    }
+
+
 
     public IShape getShape(Integer idx) {
         return shapes.getShapeIndex(idx);
+    }
+
+    public void moveShape(int dx, int dy) {
+        shapes.moveShape(dx, dy);
     }
 
     public void copyList(ArrayList<IShape> copyList) {

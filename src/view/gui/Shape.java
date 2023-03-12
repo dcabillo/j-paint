@@ -5,6 +5,7 @@ import view.IShape;
 import model.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Shape implements IShape {
     private IDrawShape shape;
@@ -65,6 +66,10 @@ public class Shape implements IShape {
     }
     public void unselectShape() {
         this.selected = false;
+    }
+    public ArrayList<IShape> unGroup() {
+        ArrayList<IShape> shapeGroup = new ArrayList<>();
+        return shapeGroup;
     }
     public void moveShape(int dx, int dy){
         shape.move(dx, dy);

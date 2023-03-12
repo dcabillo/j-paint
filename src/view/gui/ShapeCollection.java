@@ -50,6 +50,31 @@ public class ShapeCollection {
         setShapes(history.getCurrentState());
     }
 
+    public void unGroup() {
+        int idx = 0;
+        ArrayList<IShape> unGroupedShapes = new ArrayList<>();
+        while(idx<shapes.size()){
+            if (shapes.get(idx).isSelected() & shapes.get(idx).unGroup().size() >=1) {
+                for (IShape shape: shapes.get(idx).unGroup()) {
+                    unGroupedShapes.add(shape);
+                }
+                shapes.remove(idx);
+            }
+            else {
+                idx+=1;
+            }
+        }
+        if (unGroupedShapes.size() > 0) {
+            for (IShape shape: unGroupedShapes) {
+                shape.selectShape();
+                shapes.add(shape);
+            }
+            history.addState(new ArrayList<>(shapes));
+
+        }
+
+    }
+
     public void redoShape() {
         //upper bounding redo
         if (indx < shapes.size()) {

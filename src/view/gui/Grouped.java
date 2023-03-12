@@ -32,6 +32,14 @@ public class Grouped implements IShape {
         group.add(shape);
     }
 
+    public ArrayList<IShape> unGroup() {
+        ArrayList<IShape> shapeGroup = new ArrayList<>();
+        for (IShape shape: group) {
+            shapeGroup.add(shape);
+        }
+        return shapeGroup;
+    }
+
     public void draw(Graphics2D g2d) {
         for (IShape shape: group) {
             shape.draw(g2d);
@@ -66,6 +74,14 @@ public class Grouped implements IShape {
     public String getShadingType() {return "none";}
     public ShapeType getShape() {
         return ShapeType.RECTANGLE;
+    }
+
+    public void moveShape(int dx, int dy) {
+        for (IShape shape: group) {
+            shape.moveShape(dx, dy);
+        }
+        this.sx +=dx;
+        this.sy += dy;
     }
     public int[] getCoord() {
         return this.coordinates;

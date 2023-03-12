@@ -50,4 +50,21 @@ public class Triangle implements IDrawShape {
     public ShapeType getShapeType(){
         return ShapeType.TRIANGLE;
     }
+
+    public void move(int dx, int dy) {
+        this.sx += dx;
+        this.sy += dy;
+        this.xPoints[0] += dx;
+        this.xPoints[1] += dx;
+        this.xPoints[2] += dx;
+        this.yPoints[0] += dy;
+        this.yPoints[1] += dy;
+        this.yPoints[2] += dy;
+        this.HLxPoints[0] += dx;
+        this.HLxPoints[1] += dx;
+        this.HLxPoints[2] += dx;
+        this.HLyPoints[0] += dy;
+        this.HLyPoints[1] += dy;
+        this.HLyPoints[2] += dy;
+    }
 }

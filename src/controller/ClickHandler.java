@@ -56,26 +56,9 @@ public class ClickHandler extends MouseAdapter {
             paintCanvas.selectShapes(Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y), Math.max(startPoint.x, endPoint.x), Math.max(startPoint.y, endPoint.y));
         }
         else if (appState.getActiveMouseMode() == MouseMode.MOVE) {
-            ArrayList<Integer> selected = paintCanvas.getSelectedList();
-            HashMap<Integer, IShape> shiftedShapes = new HashMap<Integer, IShape>();
             int dx = endPoint.x - startPoint.x;
             int dy = endPoint.y - startPoint.y;
-            for (Integer idx: selected) {
-                IShape oldShape = paintCanvas.getShape(idx);
-                Color primaryColor = oldShape.getPrimaryColor();
-                Color secondaryColor = oldShape.getSecondaryColor();
-                String shading = oldShape.getShadingType();
-                ShapeType type = oldShape.getShape();
-                int[] coordinates = oldShape.getCoord();
-                int width = coordinates[2] - coordinates[0];
-                int height = coordinates[3] - coordinates[1];
-                int sx = coordinates[0] + dx;
-                int sy = coordinates[1] + dy;
-                ShapeFactory shape = new ShapeFactory(type, sx, sy, width, height);
-                IShape newShape = new Shape(shape.getShape(), primaryColor, secondaryColor, shading);
-                shiftedShapes.put(idx, newShape);
-            }
-            paintCanvas.replaceShape(shiftedShapes);
+            paintCanvas.moveShape(dx, dy);
             paintCanvas.repaint();
 
         }

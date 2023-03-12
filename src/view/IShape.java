@@ -1,5 +1,7 @@
 package view;
 import java.awt.*;
+import java.util.ArrayList;
+
 import model.*;
 
 
@@ -16,5 +18,6 @@ public interface IShape {
     public void addShape(IShape shape);
     public void unselectShape();
     public void moveShape( int dx, int dy);
+    public ArrayList<IShape> unGroup();
 
 }
