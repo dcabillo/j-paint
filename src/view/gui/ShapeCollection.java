@@ -3,12 +3,7 @@ package view.gui;
 import view.IDrawShape;
 import view.IShape;
 import model.*;
-
-
 import java.util.ArrayList;
-import java.awt.Rectangle;
-import java.util.*;
-import java.util.Map;
 
 public class ShapeCollection {
     //Will have to add in all shapes in future. This is simply a stack of all shapes generated.
@@ -113,16 +108,6 @@ public class ShapeCollection {
         return shape;
     }
 
-    public void replaceShape(HashMap<Integer, IShape> shiftedShapes) {
-        for (Map.Entry<Integer, IShape> entry : shiftedShapes.entrySet()) {
-            Integer key = entry.getKey();
-            IShape value = entry.getValue();
-            value.selectShape();
-            shapes.set(key, value);
-        }
-        history.addState(new ArrayList<>(shapes));
-
-    }
 
     public void delete(){
         int idx = 0;
@@ -161,7 +146,6 @@ public class ShapeCollection {
         IShape group = new Grouped(min_x, min_y, max_x, max_y);
         while(idx<shapes.size()){
             if (shapes.get(idx).isSelected()) {
-                System.out.println(idx);
                 group.addShape(shapes.get(idx));
                 shapes.remove(idx);
             }
@@ -181,11 +165,6 @@ public class ShapeCollection {
                 shape.moveShape(dx, dy);
             }
         }
-    }
-
-    public int[] getCoorIndex(int index) {
-        IShape shape = shapes.get(index);
-        return shape.getCoord();
     }
 
 }
