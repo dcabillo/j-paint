@@ -25,7 +25,9 @@ public class Main {
 
         ApplicationState appState = new ApplicationState(uiModule);
         IJPaintController controller = new JPaintController(uiModule, appState, paintCanvas);
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, appState));
+        ClickHandler clickHandler = new ClickHandler(paintCanvas, appState);
+        paintCanvas.addMouseListener(clickHandler);
+        paintCanvas.addMouseMotionListener(clickHandler);
 
         controller.setup();
     }

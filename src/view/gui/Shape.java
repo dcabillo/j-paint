@@ -72,9 +72,13 @@ public class Shape implements IShape {
         ArrayList<IShape> shapeGroup = new ArrayList<>();
         return shapeGroup;
     }
-    public void moveShape(int dx, int dy){
-        shape.move(dx, dy);
+    public IShape moveShape(int dx, int dy){
+        IDrawShape newShape = this.shape.move(dx, dy);
+        IShape moved = new Shape(newShape, this.primaryColor, this.secondaryColor, this.shading);
+        return moved;
     };
+
+
     public IShape copyShape() {
         IDrawShape newShape = this.shape.copyType();
         IShape copy = new Shape(newShape, this.primaryColor, this.secondaryColor, this.shading);

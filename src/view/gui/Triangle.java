@@ -48,21 +48,9 @@ public class Triangle implements IDrawShape {
     }
 
 
-    public void move(int dx, int dy) {
-        this.sx += dx;
-        this.sy += dy;
-        this.xPoints[0] += dx;
-        this.xPoints[1] += dx;
-        this.xPoints[2] += dx;
-        this.yPoints[0] += dy;
-        this.yPoints[1] += dy;
-        this.yPoints[2] += dy;
-        this.HLxPoints[0] += dx;
-        this.HLxPoints[1] += dx;
-        this.HLxPoints[2] += dx;
-        this.HLyPoints[0] += dy;
-        this.HLyPoints[1] += dy;
-        this.HLyPoints[2] += dy;
+    public IDrawShape move(int dx, int dy) {
+        IDrawShape moved = new Triangle(this.sx+dx, this.sy+dy, this.width, this.height);
+        return moved;
     }
     public IDrawShape copyType() {
         IDrawShape copy = new Triangle(this.sx+50, this.sy+50, this.width, this.height);

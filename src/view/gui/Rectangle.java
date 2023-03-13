@@ -40,9 +40,9 @@ public class Rectangle implements IDrawShape {
     }
 
 
-    public void move(int dx, int dy) {
-        this.sx += dx;
-        this.sy += dy;
+    public IDrawShape move(int dx, int dy) {
+        IDrawShape moved = new Rectangle(this.sx+dx, this.sy+dy, this.width, this.height);
+        return moved;
     }
 
     public IDrawShape copyType() {

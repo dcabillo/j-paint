@@ -37,9 +37,9 @@ public class Ellipse implements IDrawShape {
         g2d.drawOval(this.sx-5, this.sy-5, this.width+10, this.height+10);
     }
 
-    public void move(int dx, int dy) {
-        this.sx += dx;
-        this.sy += dy;
+    public IDrawShape move(int dx, int dy) {
+        IDrawShape moved = new Ellipse(this.sx+dx, this.sy+dy, this.width, this.height);
+        return moved;
     }
     public IDrawShape copyType() {
         IDrawShape copy = new Ellipse(this.sx+50, this.sy+50, this.width, this.height);

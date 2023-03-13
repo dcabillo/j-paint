@@ -71,12 +71,14 @@ public class Grouped implements IShape {
     }
 
 
-    public void moveShape(int dx, int dy) {
+    public IShape moveShape(int dx, int dy) {
+        IShape newGroup = new Grouped(this.sx + dx, this.sy+dy, this.width+this.sx+dx, this.height+this.sy+dy);
         for (IShape shape: group) {
-            shape.moveShape(dx, dy);
+            IShape newShape = shape.moveShape(dx, dy);
+            newGroup.addShape(newShape);
         }
-        this.sx +=dx;
-        this.sy += dy;
+
+        return newGroup;
     }
     public int[] getCoord() {
         return this.coordinates;

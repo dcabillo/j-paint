@@ -13,7 +13,7 @@ public interface IShape {
     int[] getCoord();
     void addShape(IShape shape);
     void unselectShape();
-    void moveShape( int dx, int dy);
+    IShape moveShape( int dx, int dy);
     ArrayList<IShape> unGroup();
     IShape copyShape();
 

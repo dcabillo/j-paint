@@ -63,7 +63,7 @@ public class ShapeCollection {
         }
         if (unGroupedShapes.size() > 0) {
             for (IShape shape: unGroupedShapes) {
-                shape.selectShape();
+
                 shapes.add(shape);
             }
             history.addState(new ArrayList<>(shapes));
@@ -143,12 +143,19 @@ public class ShapeCollection {
         history.addState(new ArrayList<>(shapes));
     }
 
+
     public void moveShape(int dx, int dy) {
-        for (IShape shape: shapes) {
-            if (shape.isSelected()){
-                shape.moveShape(dx, dy);
+        int idx = 0;
+        while(idx<shapes.size()){
+            if (shapes.get(idx).isSelected()) {
+                IShape newShape = shapes.get(idx).moveShape(dx,dy);
+                newShape.selectShape();
+                shapes.set(idx, newShape);
             }
+                idx+=1;
+
         }
+        history.addState(new ArrayList<>(shapes));
     }
     public boolean isOneSelected() {
         for (IShape shape: shapes){
