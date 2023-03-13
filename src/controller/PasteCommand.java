@@ -1,5 +1,6 @@
 package controller;
 
+import view.ICommand;
 import view.IShape;
 import view.gui.Clipboard;
 import view.gui.PaintCanvas;
@@ -9,14 +10,14 @@ import view.gui.Shape;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PasteCommand {
+public class PasteCommand implements ICommand {
     private final PaintCanvas paintCanvas;
     Clipboard clipboard = Clipboard.getInstance();
     public PasteCommand(PaintCanvas paintCanvas) {
         this.paintCanvas = paintCanvas;
     }
 
-    public void paste() {
+    public void execute() {
         paintCanvas.copyList(clipboard.getShapes());
 
 

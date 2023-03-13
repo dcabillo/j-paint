@@ -23,17 +23,18 @@ public class JPaintController implements IJPaintController {
     }
 
     private void setupEvents() {
+        CommandFactory commandFactory = new CommandFactory();
         uiModule.addEvent(EventName.CHOOSE_SHAPE, () -> applicationState.setActiveShape());
         uiModule.addEvent(EventName.CHOOSE_PRIMARY_COLOR, () -> applicationState.setActivePrimaryColor());
         uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, () -> applicationState.setActiveSecondaryColor());
         uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, () -> applicationState.setActiveShadingType());
         uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, () -> applicationState.setActiveStartAndEndPointMode());
-        uiModule.addEvent(EventName.UNDO, () -> new UndoCommand(paintCanvas).undo());
-        uiModule.addEvent(EventName.REDO, () -> new RedoCommand(paintCanvas).redo());
-        uiModule.addEvent(EventName.COPY, () -> new CopyCommand().copy());
-        uiModule.addEvent(EventName.PASTE, () -> new PasteCommand(paintCanvas).paste());
-        uiModule.addEvent(EventName.DELETE, () -> new DeleteCommand(paintCanvas).delete());
-        uiModule.addEvent(EventName.GROUP, () -> new GroupCommand(paintCanvas).group());
-        uiModule.addEvent(EventName.UNGROUP, () -> new UngroupCommand(paintCanvas).ungroup());
+        uiModule.addEvent(EventName.UNDO, () -> commandFactory.createCommand(EventName.UNDO, paintCanvas).execute());
+        uiModule.addEvent(EventName.REDO, () -> commandFactory.createCommand(EventName.REDO, paintCanvas).execute());
+        uiModule.addEvent(EventName.COPY, () -> commandFactory.createCommand(EventName.COPY, paintCanvas).execute());
+        uiModule.addEvent(EventName.PASTE, () -> commandFactory.createCommand(EventName.PASTE, paintCanvas).execute());
+        uiModule.addEvent(EventName.DELETE, () -> commandFactory.createCommand(EventName.DELETE, paintCanvas).execute());
+        uiModule.addEvent(EventName.GROUP, () -> commandFactory.createCommand(EventName.GROUP, paintCanvas).execute());
+        uiModule.addEvent(EventName.UNGROUP, () -> commandFactory.createCommand(EventName.UNGROUP, paintCanvas).execute());
     }
 }

@@ -1,4 +1,5 @@
 package controller;
+import view.ICommand;
 import view.IShape;
 import view.gui.PaintCanvas;
 import view.gui.Clipboard;
@@ -6,7 +7,7 @@ import view.gui.ShapeCollection;
 
 import java.util.ArrayList;
 
-public class CopyCommand {
+public class CopyCommand implements ICommand {
     ShapeCollection shapes = ShapeCollection.getInstance();
     Clipboard clipboard = Clipboard.getInstance();
 
@@ -15,7 +16,7 @@ public class CopyCommand {
     public CopyCommand() {
     }
 
-    public void copy() {
+    public void execute() {
         clip = shapes.copy();
         clipboard.clear();
         for (IShape shape:clip) {

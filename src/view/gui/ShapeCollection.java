@@ -5,6 +5,7 @@ import view.IShape;
 import model.*;
 import java.util.ArrayList;
 
+
 public class ShapeCollection {
     //Will have to add in all shapes in future. This is simply a stack of all shapes generated.
     private static ShapeCollection instance = null;
@@ -48,6 +49,7 @@ public class ShapeCollection {
     public void unGroup() {
         int idx = 0;
         ArrayList<IShape> unGroupedShapes = new ArrayList<>();
+
         while(idx<shapes.size()){
             if (shapes.get(idx).isSelected() & shapes.get(idx).unGroup().size() >=1) {
                 for (IShape shape: shapes.get(idx).unGroup()) {
@@ -147,6 +149,15 @@ public class ShapeCollection {
                 shape.moveShape(dx, dy);
             }
         }
+    }
+    public boolean isOneSelected() {
+        for (IShape shape: shapes){
+            if (shape.isSelected()){
+                return true;
+            }
+
+        }
+        return false;
     }
     public ArrayList<IShape> copy() {
         ArrayList<IShape> copies = new ArrayList<>();
