@@ -15,3 +15,7 @@ Patterns:
 
 5. THIS IS THE NEW PATTERN. Composite Pattern is implemented by the Grouped class, allowing for a grouped set of different shapes to be treated as the same shape.
 
+
+EXTRA CREDIT:
+Made it so that when drawing a shape or selecting a shape, the shape would show as you drag the mouse. the code is in click handler and paint canvas
+
