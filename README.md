@@ -20,3 +20,9 @@ Patterns:
 2. Singleton Design Pattern is implemented in the CollectionHistory Class and in the ShapeCollection Class. These classes can only be instantiated by themselves.
 3. Abstract Factory pattern. Here we have an IDrawShape interface that creates 3 typed of shapes based on the Factory called. This can all be initiated in the Shape Factory class.
 4. Observer pattern is implemented by the Click handler
+Check-in 4:
+Patterns: 
+1. Singleton Pattern is implemented in the CollectionHistory Class and in the ShapeCollection Class. These classes can only be instantiated by themselves.
+2. Strategy Pattern is implemented by the Shape class and IDrawShape Interface. It allows for draw and all of the baseline shapes, Rectangle, Triangle and ellipse to be treated the same with the same methods.
+3. Composite Pattern is implemented by the Grouped class, allowing for a grouped set of different shapes to be treated as the same shape.
+4.
