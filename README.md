@@ -2,27 +2,20 @@
 
 Link to Repo: https://github.com/dcabillo/j-paint.git
 
-Check-in 1: 
-rectangles appear and undo redo also work. When you add more rectangles after undoing an action you cannot redo that action. This was a purposeful design decision to avoid having 2 stacks and redoing work that could mess up new work. The code runs, but I am getting warnings from intellij on the add event listener file. 
 
-Check-in 2: 
-ran out of time for this one. implemented everything except for the move functionality. I have the groundwork for it coded but its messy and I started to 
-rush towards the end. 
-Design patterns : Abstract Factory. ClickHandler calls getShape in ShapeSwitch to then create a IDraw shape which becomes an IShape into the ShapeCollection. 
-
-Observer pattern is implemented by the Click handler and notifies the PaintCanvas to change shape collection
-
-Needed more time to analyze, identify, and implement more patterns
-
-Check-in 3: 
-Patterns: 
-1. Adapter pattern implemented in the Shape class. I think there is an arguement to be made that the adapter pattern is present for all shape types due to the draw method. i.e. using a custom method to call third party drawing functionality. It is especially present with the Triangle class because the code allows for the same inputs to be pushed into REC, TRI, and ELLIPSE, even though the third party draw function for triangle takes in 2 arrays, rather than the standard corners my code takes in. 
-2. Singleton Design Pattern is implemented in the CollectionHistory Class and in the ShapeCollection Class. These classes can only be instantiated by themselves.
-3. Abstract Factory pattern. Here we have an IDrawShape interface that creates 3 typed of shapes based on the Factory called. This can all be initiated in the Shape Factory class.
-4. Observer pattern is implemented by the Click handler
 Check-in 4:
 Patterns: 
-1. Singleton Pattern is implemented in the CollectionHistory Class and in the ShapeCollection Class. These classes can only be instantiated by themselves.
-2. Strategy Pattern is implemented by the Shape class and IDrawShape Interface. It allows for draw and all of the baseline shapes, Rectangle, Triangle and ellipse to be treated the same with the same methods.
-3. Composite Pattern is implemented by the Grouped class, allowing for a grouped set of different shapes to be treated as the same shape.
-4.
+1. Abstract Factory pattern. Here we have an IDrawShape interface that creates 3 typed of shapes based on the Factory called. This can all be initiated in the Shape Factory class.
+
+2. Singleton Pattern is implemented in the CollectionHistory Class and in the ShapeCollection Class. These classes can only be instantiated by themselves.
+
+3. Strategy Pattern is implemented by the Shape class and IDrawShape Interface. It allows for draw and all of the baseline shapes, Rectangle, Triangle and ellipse to be treated the same with the same methods.
+
+4.Null Object Pattern is implemented in the command Factory. An null object is executed under certain conditions to avoid undo/redo errors.
+
+5. THIS IS THE NEW PATTERN. Composite Pattern is implemented by the Grouped class, allowing for a grouped set of different shapes to be treated as the same shape.
+
+
+EXTRA CREDIT:
+Made it so that when drawing a shape or selecting a shape, the shape would show as you drag the mouse. the code is in click handler and paint canvas
+
